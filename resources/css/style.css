@@ -1,5 +1,6 @@
-/* REVIEW: fix images below, then review and refactor before
-moving on to media queries */
+/* REVIEW: I'm very close, but a few things seem off. In part
+I couldn't figure it out, in part the redline specs had errors or
+omissions */
 
 html {
   font-size: 18px;
@@ -9,17 +10,15 @@ body {
   font-family: Helvetica;
 }
 
-/* NOTE: advice from online chat, to add this and then assign class where needed */
+/* NOTE: advice from online chat, to add this and then assign
+class where needed */
 .container {
   width: 960px;
   margin: auto;
 }
 
-.flex {
+.flex-center {
   display: flex;
-}
-
-.center {
   align-items: center;
 }
 
@@ -69,13 +68,17 @@ nav {
   color: white;
 }
 
-nav .container {
+nav .container{
   display: flex;
   justify-content: space-between;
 }
 
+nav .responsive {
+  display: none;
+}
+
 .products {
-  margin: 3rem 0;
+  margin: 3rem auto;
   display: flex;
   justify-content: space-between;
 }
@@ -85,10 +88,17 @@ nav .container {
   width: 30%;
 }
 
-/* NOTE: fix dimensions so images are centered, may need to add another parent div */
-.item img {
+.item-image {
   margin: 2rem 3rem;
   height: 9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-image img {
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .item p {
@@ -120,4 +130,69 @@ footer {
   background-color: black;
   padding: 5rem 0;
   color: white;
+}
+
+@media only screen and (max-width: 1024px) {
+  .item {
+    width: 47%;
+  }
+
+  .glasses {
+    display: none;
+  }
+
+  nav .container {
+    display: none;
+  }
+
+  nav .responsive {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .container {
+    width: 470px;
+    margin: auto;
+  }
+
+  .banner {
+    height: 15rem;
+  }
+
+  #new-arrivals {
+    display: none;
+  }
+
+  #mobile-new-arrivals {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    position: relative;
+    top: 10rem;
+    width: 79%;
+  }
+
+  #mobile-new-arrivals p {
+    font-size: 0.77rem;
+    margin-bottom: 0.25rem;
+  }
+
+  #mobile-new-arrivals h1 {
+    font-size: 1rem;
+  }
+  .item, .store-info{
+    width: 90%;
+    margin: auto;
+  }
+
+  .glasses, .watch {
+    display: none;
+  }
+
+  footer {
+    text-align: center;
+  }
 }
